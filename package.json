@@ -1,0 +1,28 @@
+{
+  "name": "Fitness Tracker",
+  "version": "1.0.0",
+  "description": "A REST API that enables the user to record individual workouts and track their progress over time",
+  "main": "server.js",
+  "scripts": {
+    "devStart": "nodemon server.js",
+    "start": "node server.js",
+    "seed": "node seeders/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koyeary/jurassic-snark.git"
+  },
+  "author": "Kat Yeary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koyeary/jurassic-snark/issues"
+  },
+  "homepage": "https://github.com/koyeary/jurassic-snark#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.6",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  }
+}
