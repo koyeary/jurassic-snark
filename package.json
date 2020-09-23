@@ -1,10 +1,10 @@
 {
-  "name": "Fitness Tracker",
+  "name": "jurassic-snark",
   "version": "1.0.0",
   "description": "A REST API that enables the user to record individual workouts and track their progress over time",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js",
+    "watch": "nodemon server.js",
     "start": "node server.js",
     "seed": "node seeders/seed.js"
   },

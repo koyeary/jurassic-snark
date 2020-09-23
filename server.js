@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect('mongodb://localhost/fitnesstracker', {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,

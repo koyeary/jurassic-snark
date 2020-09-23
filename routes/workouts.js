@@ -79,8 +79,13 @@ const router = express.Router()
 const Workout = require('../models/Workout')
 
 // Get all
-router.get('/', (req, res) => {
-  res.send('Hello Workouts')
+router.get('/', async (req, res) => {
+  try {
+    const workouts = await Workout.find()
+    res.json(workouts)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
 });
 
 // Get Range
