@@ -74,23 +74,28 @@ async function getWorkout(req, res, next) {
 
 module.exports = router */
 
-const express = require('express')
-const router = express.Router()
-const Workout = require('../models/Workout')
+const express = require('express');
+const router = express.Router();
+const Workout = require('../models/Workout');
 
 // Get all
 router.get('/', async (req, res) => {
   try {
-    const workouts = await Workout.find()
-    res.json(workouts)
+    const workouts = await Workout.find();
+    res.json(workouts);
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.status(500).json({ message: err.message });
   }
 });
 
 // Get Range
- router.get('/range', (req, res) => {
-  res.send('Hello Range')
+ router.get('/range', async (req, res) => {
+  try {
+    const workouts = await Workout.find().limit(7);
+    res.json(workouts);
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
 });
 
 // Create One

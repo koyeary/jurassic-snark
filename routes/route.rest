@@ -14,4 +14,6 @@ Content-type: application/json
         "distance": 0
  }
  
-    
+###
+
+GET http://localhost:3000/workouts/range
