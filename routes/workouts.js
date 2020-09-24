@@ -89,7 +89,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get Range
- router.get('/range', async (req, res) => {
+router.get('/range', async (req, res) => {
   try {
     const workouts = await Workout.find().limit(7);
     res.json(workouts);
@@ -101,7 +101,29 @@ router.get('/', async (req, res) => {
 // Create One
 router.post('/', async (req, res) => {
   const workout = new Workout(
-    {exercises: [{
+    {
+      exercises: [{
+        type: req.body.type,
+        name: req.body.name,
+        duration: req.body.duration,
+        weight: req.body.weight,
+        reps: req.body.reps,
+        sets: req.body.sets,
+        distance: req.body.distance
+      }]
+    });
+  try {
+    const newWorkout = await workout.save();
+    res.status(201).json(newWorkout);
+  } catch (err) {
+    res.status(400).json({ message: err.message })
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+  const workout = await Workout.findByIdAndUpdate(req.params.id,
+    { $push: { exercises: [{
       type: req.body.type,
       name: req.body.name,
       duration: req.body.duration,
@@ -109,23 +131,32 @@ router.post('/', async (req, res) => {
       reps: req.body.reps,
       sets: req.body.sets,
       distance: req.body.distance
-    }]})
-  try {
-    const newWorkout = await workout.save()
-    res.status(201).json(newWorkout)
-  } catch (err) {
-    res.status(400).json({ message: err.message })
-  }
-});
+    }]} }
+  );
+  res.status(201).json(workout);
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  });
 
-// Update One
-router.put('/:id', (req, res) => {
-    res.send(req.params.id);
-});
 
 // Delete One
 router.delete('/:id', (req, res) => {
-    res.send('Hello delete');
+  res.send('Hello delete');
 });
- 
+
+/* async function getWorkout(req, res, next) {
+  let workout;
+  try {
+    workout = await Workout.findById(req.params.id);
+    if (workout == null) {
+      return res.status(404).json({ message: 'Cannot find workout' });
+    }
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+  res.workout = workout;
+  next();
+} */
+
 module.exports = router

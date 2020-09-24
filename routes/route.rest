@@ -17,3 +17,19 @@ Content-type: application/json
 ###
 
 GET http://localhost:3000/workouts/range
+
+###
+
+PUT http://localhost:3000/workouts/5f6936392f3aa1046f0cec53
+Content-type: application/json
+
+{
+        "type": "Cardio",
+        "name": "jumprope",
+        "duration": 5,
+        "weight": 0,
+        "reps": 1,
+        "sets": 1,
+        "distance": 0
+ }
+
