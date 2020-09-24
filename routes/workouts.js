@@ -94,9 +94,24 @@ router.get('/', async (req, res) => {
 });
 
 // Create One
-router.post('/', (req, res) => {
-    res.send(req.params.id);
-})
+router.post('/', async (req, res) => {
+  const workout = new Workout(
+    {exercises: [{
+      type: req.body.type,
+      name: req.body.name,
+      duration: req.body.duration,
+      weight: req.body.weight,
+      reps: req.body.reps,
+      sets: req.body.sets,
+      distance: req.body.distance
+    }]})
+  try {
+    const newWorkout = await workout.save()
+    res.status(201).json(newWorkout)
+  } catch (err) {
+    res.status(400).json({ message: err.message })
+  }
+});
 
 // Update One
 router.put('/:id', (req, res) => {

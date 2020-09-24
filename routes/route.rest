@@ -1,1 +1,17 @@
 GET http://localhost:3000/workouts
+
+### 
+POST http://localhost:3000/workouts
+Content-type: application/json
+
+{
+        "type": "Cardio",
+        "name": "jumprope",
+        "duration": 5,
+        "weight": 0,
+        "reps": 1,
+        "sets": 1,
+        "distance": 0
+ }
+ 
+    
