@@ -141,8 +141,13 @@ router.put("/:id", async (req, res) => {
 
 
 // Delete One
-router.delete('/:id', (req, res) => {
-  res.send('Hello delete');
+router.delete('/:id', async (req, res) => {
+  try {
+    const workout = await Workout.findByIdAndDelete(req.body.id);
+    res.json({ message: 'Deleted workout' })
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 /* async function getWorkout(req, res, next) {

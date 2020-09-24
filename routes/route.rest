@@ -33,3 +33,6 @@ Content-type: application/json
         "distance": 0
  }
 
+###
+
+DELETE http://localhost:3000/workouts/5f6bf2a45d53bf42339ad6ad
