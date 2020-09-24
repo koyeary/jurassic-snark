@@ -26,8 +26,8 @@ const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to database'));
 
-const workoutRouter = require('./routes/workouts');
-app.use('/workouts', workoutRouter);
+app.use(require('./routes/workouts'));
+app.use(require('./routes/routes'));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);

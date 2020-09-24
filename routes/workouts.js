@@ -3,7 +3,7 @@ const router = express.Router();
 const Workout = require('../models/Workout');
 
 // Get All
-router.get('/', async (req, res) => {
+router.get('/api/workouts', async (req, res) => {
   try {
     const workouts = await Workout.find();
     res.json(workouts);
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get Range
-router.get('/range', async (req, res) => {
+router.get('/api/workouts/range', async (req, res) => {
   try {
     const workouts = await Workout.find().limit(7);
     res.json(workouts);
@@ -23,7 +23,7 @@ router.get('/range', async (req, res) => {
 });
 
 // Create One
-router.post('/', async (req, res) => {
+router.post('/api/workouts', async (req, res) => {
   const workout = new Workout(
     {
       exercises: [{
@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 });
 
 //Update One
-router.put("/:id", async (req, res) => {
+router.put("/api/workouts/:id", async (req, res) => {
   try {
   const workout = await Workout.findByIdAndUpdate(req.params.id,
     { $push: { exercises: [{
@@ -66,7 +66,7 @@ router.put("/:id", async (req, res) => {
 
 
 // Delete One
-router.delete('/:id', async (req, res) => {
+router.delete('/api/workouts/:id', async (req, res) => {
   try {
     const workout = await Workout.findByIdAndDelete(req.body.id);
     res.json({ message: 'Deleted workout' })
