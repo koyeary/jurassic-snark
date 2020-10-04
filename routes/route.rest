@@ -1,26 +1,31 @@
-GET http://localhost:3000/workouts
+GET http://localhost:3000/api/workouts
 
 ### 
-POST http://localhost:3000/workouts
+POST http://localhost:3000/api/workouts
 Content-type: application/json
 
 {
         "type": "Cardio",
         "name": "jumprope",
+        "exercises":[ {
+        "day": 2,
         "duration": 5,
         "weight": 0,
         "reps": 1,
         "sets": 1,
         "distance": 0
+        }]
+        
+
  }
  
 ###
 
-GET http://localhost:3000/workouts/range
+GET http://localhost:3000/api/workouts/range
 
 ###
 
-PUT http://localhost:3000/workouts/5f6936392f3aa1046f0cec53
+PUT http://localhost:3000/api/workouts/5f6936392f3aa1046f0cec53
 Content-type: application/json
 
 {
@@ -35,4 +40,4 @@ Content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/workouts/5f6bf2a45d53bf42339ad6ad
+DELETE http://localhost:3000/api/workouts/5f6bf2a45d53bf42339ad6ad

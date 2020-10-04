@@ -16,6 +16,7 @@ router.post("/api/workouts", (req, res) => {
 router.put("/api/workouts/:id", (req, res) => {
   Workout.findByIdAndUpdate(
     req.params.id,
+    //Add workout to existing exercises
     { $push: { exercises: body } },
     //Validate that the submitted form isn't missing any required information
     { new: true, runValidators: true }
